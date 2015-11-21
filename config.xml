@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.phonegap.testForm" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Prueba formulario</name>
+    <description>
+        Una simple formulario de Jquery Mobile.
+    </description>
+    <author email="chanerec@gmail.com" href="http://mundosica.com">
+        fitorec
+    </author>
+    <content src="index.html" />
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="default" />
+    <preference name="target-device" value="universal" />
+    <icon src="icon.png" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+</widget>
