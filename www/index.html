@@ -17,42 +17,19 @@
     </head>
     <body>
 
-<div data-role="page" action='#' id='principal'>
+<div data-role="page" action='#' id='login'>
 	<div data-role="header">
-			<h3>Ejemplo formulario</h3>
+			<h3>Login</h3>
 	</div><!-- /header -->
 	<div data-role="content">
 		<form id='formulario'>
-			<label for='edad'>
-				Edad
-				<input type='range' min='18' max='45' value='18' id='edad'>
+			<label for='username'>
+				Usuario
+				<input id='username' placeholder='p.e. pepito'>
 			</label>
-			<label for='busqueda'>
-				Buscar
-				<input type='search' id='busqueda' placeholder='p.e. palabra en mixteco'>
-			</label>
-			<label for='condiciones'>
-				<input
-					type='checkbox' id='condiciones'
-					data-role='flipswitch'
-					data-on-text='Sí' data-off-text='No'
-				>
-				Aceptas las condiciones<small>(Flip switch)</small>
-			</label>
-			
-			<label for='colores'>
-				Tu color favorito
-				<select id='colores' name='colores'>
-					<option value='1'>rojo</option>
-					<option value='2'>verde</option>
-					<option value='3'>naranja</option>
-					<option value='4'>violeta</option>
-				</select>
-			</label>
-			
-			<label for='fecha'>
-				Fecha Nacimiento.
-				<input type='date' id='fecha'>
+			<label for='password'>
+				Contraseña
+				<input type='password' id='password'>
 			</label>
 			
 			<input type='submit' value='Aceptar'>
@@ -61,12 +38,13 @@
 </div><!-- fin role page -->
 
 
-<div data-role="page" id='result' data-theme="b">
+<div data-role="page" id='principal' data-theme="b">
 	<div data-role="header" data-theme="a">
-			<h3>Dias generados</h3>
+			<h3>Bienvenido <span id='username-result'></span></h3>
 	</div><!-- /header -->
 	<div data-role="content">
-		<a href='#main' data-role='button' data-icon="arrow-l">Regresar al inicio</a>
+		Usuario identificado correctamente
+		<button id='borrar_datos' data-role='button'>Borrar datos</button>
 	</div><!-- fin role content -->
 </div><!-- fin role page -->
 
