@@ -41,12 +41,14 @@ var app = {
 			//window.localStorage.clear();
 			//app.revisarDatos();
 			$.mobile.changePage('#login');
+			window.applicationPreferences.set("username", "");
 		});
 		app.revisarDatos();
     },
     
     revisarDatos: function($el, event) {
-		if(window.applicationPreferences.get("username") != null) {
+		var username = window.applicationPreferences.get("username");
+		if(username != null || username != '') {
 			var username = window.applicationPreferences.get("username");
 			$('#username-result').text(username);
 			$.mobile.changePage('#principal');
