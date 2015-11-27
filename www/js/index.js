@@ -26,24 +26,28 @@ var app = {
 			event.preventDefault();
 			//guardo el username
 			var username = $('#username').val();
-			window.localStorage.setItem("username", username);
+			//window.localStorage.setItem("username", username);
+			window.applicationPreferences.set("username", username);
 			//guardo el password
 			var password = $('#password').val();
-			window.localStorage.setItem("password", password);
+			//
+			// window.localStorage.setItem("password", password);
+			window.applicationPreferences.set("password", password);
 			//revisamos la existencia de datos en el Storage
 			app.revisarDatos();
 		});
 		$('#borrar_datos').click(function(even) {
 			even.preventDefault();
-			window.localStorage.clear();
-			app.revisarDatos();
+			//window.localStorage.clear();
+			//app.revisarDatos();
+			$.mobile.changePage('#login');
 		});
 		app.revisarDatos();
     },
     
     revisarDatos: function($el, event) {
-		if(window.localStorage.getItem("username") != null) {
-			var username = window.localStorage.getItem("username");
+		if(window.applicationPreferences.get("username") != null) {
+			var username = window.applicationPreferences.get("username");
 			$('#username-result').text(username);
 			$.mobile.changePage('#principal');
 		} else {
