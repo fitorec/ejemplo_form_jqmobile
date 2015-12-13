@@ -19,5 +19,5 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <plugin name="com.mobileapart.prefs" spec="1.0.1337" source="pgb" />
+    <plugin name="com.brodysoft.sqliteplugin" spec="1.0.6" source="pgb" />
 </widget>
