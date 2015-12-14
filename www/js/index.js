@@ -23,8 +23,8 @@ function populateDB(tx) {
  tx.executeSql('DROP TABLE IF EXISTS usuarios');
  tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id integer primary key, username text, password text)');
  tx.executeSql(
-	'INSERT INTO usuarios (id, username, password) VALUES (?,?,?)',
-	[1, "fitorec", "secret"]
+	'INSERT INTO usuarios (username, password) VALUES (?,?)',
+	["fitorec", "secret"]
   );
  queryDB(tx);
 }
@@ -40,8 +40,8 @@ function querySuccess(tx, results) {
 	 for (var i = 0; i < len; i++) { // loop as many times as there are row results
 		 document.getElementById("login").innerHTML +=
 		 "<table><tr><td>ID = " + results.rows.item(i).id +
-		 "</td><td>data1 = " + results.rows.item(i).usename +
-		 "</td><td>data2 = " + results.rows.item(i).password +
+		 "</td><td>username = " + results.rows.item(i).usename +
+		 "</td><td>password = " + results.rows.item(i).password +
 		 "</td></tr></table>";
 	 }
 }
