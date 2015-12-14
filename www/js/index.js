@@ -7,9 +7,9 @@ function onDeviceReady() {
 // create table
 function populateDB(tx) {
  tx.executeSql('DROP TABLE IF EXISTS usuarios');
- tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id integer primary key, username text, password integer, svgImage text)');
- tx.executeSql('INSERT INTO usuarios (username, password, svgImage) VALUES (?,?,?)', ['test1', 100, '<svg version="1.1" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><rect x="4.815" y="4.815" fill="#039BF9" stroke="" width="100" height="100"></svg>']);
- tx.executeSql("INSERT INTO usuarios (username, password, svgImage) VALUES (?,?,?)", ['test2', 200, '<svg version="1.1" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><rect x="4.815" y="4.815" fill="#039BF9" stroke="" width="100" height="100"></svg>']);
+ tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id integer primary key, username text, password text)');
+ tx.executeSql('INSERT INTO usuarios (username, password) VALUES (?,?,?)', ['test1', 'sdf']);
+ tx.executeSql("INSERT INTO usuarios (username, password) VALUES (?,?,?)", ['test2', 'fsd']);
  queryDB(tx);
 }
 // form the query
@@ -24,8 +24,7 @@ function querySuccess(tx, results) {
  document.getElementById("output").innerHTML +=
  "<table><tr><td>ID = " + results.rows.item(i).id + 
  "</td><td>username = " + results.rows.item(i).username + 
- "</td><td>password = " + results.rows.item(i).password + 
- "</td><td>svgImage = " + results.rows.item(i).svgImage + "</td></tr></table>";
+ "</td><td>password = " + results.rows.item(i).password + "</td></tr></table>";
  } 
 }
 // Transaction error callback
