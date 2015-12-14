@@ -2,7 +2,7 @@
 <widget id="com.phonegap.testForm" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Prueba formulario</name>
     <description>
-        Una simple formulario de Jquery Mobile.
+        Una simple formulario de Jquery Mobile y SQLite
     </description>
     <author email="chanerec@gmail.com" href="http://mundosica.com">
         fitorec
