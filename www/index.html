@@ -42,9 +42,19 @@
 	<div data-role="header" data-theme="a">
 			<h3>Bienvenido <span id='username-result'></span></h3>
 	</div><!-- /header -->
-	<div data-role="content">
-		Usuario identificado correctamente
-		<button id='borrar_datos' data-role='button'>Borrar datos</button>
+	<div data-role="content" class='content'>
+		<table id='tabla-resultados'>
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>username</th>
+					<th>password</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+		<button id='regresar_login' data-role='button'>Registrar otro usaurio</button>
 	</div><!-- fin role content -->
 </div><!-- fin role page -->
 
