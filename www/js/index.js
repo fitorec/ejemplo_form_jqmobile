@@ -7,7 +7,7 @@ function populateDB(tx) {
 }
 // form the query
 function queryDB(tx) {
- tx.executeSql("SELECT id, username, password from usuarios;", [], querySuccess, errorCB);
+ tx.executeSql("SELECT id, username, password FROM usuarios;", [], querySuccess, errorCB);
 }
 // Display the results
 function querySuccess(tx, results) {
@@ -22,7 +22,7 @@ function querySuccess(tx, results) {
 }
 // Transaction error callback
 function errorCB(err) {
-console.log("Error processing SQL: " + err.code);
+	alert("Error processing SQL: " + err.code);
 }
 // Success error callback
 function successCB() {
