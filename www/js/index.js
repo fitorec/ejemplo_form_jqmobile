@@ -65,11 +65,12 @@ var app = {
 			//app.revisarDatos();
 			app.db.transaction(function (txt){
 				tx.executeSql(
-					'INSERT INTO usuarios (username, password) VALUES (?,?)',
+					'INSERT INTO usuarios (username, password) VALUES (?, ?)',
 					[username, password]
 				  );
 			}, errorCB, querySuccess);
 		});
+		
 		$('#regresar_login').click(function(even) {
 			even.preventDefault();
 			$.mobile.changePage('#login');
