@@ -38,8 +38,13 @@ var app = {
     initialize: function() {
 		//
 		$('#formulario').submit(function(event) {
+			event.preventDefault();
 			var db = window.sqlitePlugin.openDatabase({name: "my.db"});
 			db.transaction(registrarUsuario, errorCB, successCB);
+		});
+		$('#borrar_registros').click(function(event) {
+			event.preventDefault();
+			alert("debemos borrar todos los registros");
 		});
     }
 };
