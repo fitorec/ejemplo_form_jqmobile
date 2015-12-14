@@ -6,6 +6,7 @@
  <meta name="format-detection" content="telephone=no" />
  <!-- WARNING from Cordova: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+ <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
  <title></title>
 
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script> 
@@ -98,12 +99,31 @@ function successCB() {
  
  </head>
 <body>
- <input type="button" class="buttonClass" onclick='window.location="index.html"' value="return">
-<div class="segment">
-<h2>SQLitePlugin Test</h2>
-<div id="output">&nbsp;</div>
-<input type="button" class="buttonClass" onclick='window.location="https://iphonedevlog.wordpress.com/2014/04/07/installing-chris-brodys-sqlite-database-with-cordova-cli-android/"' value="View Code On iPhoneDevLog">
-</div>
+	<div data-role="page" action='#' id='login'>
+	<div data-role="header">
+			<h3>SQLitePlugin Test</h3>
+	</div><!-- /header -->
+	<div data-role="content">
+		<form id='formulario'>
+			<label for='username'>
+				Usuario
+				<input id='username' placeholder='p.e. pepito'>
+			</label>
+			<label for='password'>
+				Contraseña
+				<input type='password' id='password'>
+			</label>
+			
+			<input type='submit' value='Aceptar'>
+		</form>
+		<div id="output">&nbsp;</div>
+		<button type="button" data-role="button" onclick='window.location="index.html"'>Regresar</button>
+	</div><!-- fin role content -->
+</div><!-- fin role page -->
+
 </body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+
  </html>
 <!-- ********************* END *********************** -->
