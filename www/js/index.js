@@ -14,7 +14,7 @@ function populateDB(tx) {
 }
 // form the query
 function queryDB(tx) {
- tx.executeSql("SELECT id, username, password, svgImage from usuarios;", [], querySuccess, errorCB);
+ tx.executeSql("SELECT id, username, password from usuarios;", [], querySuccess, errorCB);
 }
 // Display the results
 function querySuccess(tx, results) {
