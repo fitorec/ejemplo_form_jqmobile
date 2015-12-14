@@ -1,16 +1,9 @@
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
- var db = window.sqlitePlugin.openDatabase({name: "my.db"});
- db.transaction(populateDB, errorCB, successCB);
-}
-
 // create table
-function populateDB(tx) {
- tx.executeSql('DROP TABLE IF EXISTS usuarios');
+function registrarUsuario(tx) {
  tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id integer primary key, username text, password text)');
- tx.executeSql('INSERT INTO usuarios (username, password) VALUES (?,?)', ['fitorec', 'secret']);
- tx.executeSql("INSERT INTO usuarios (username, password) VALUES (?,?)", ['heladio', 'password']);
- tx.executeSql("INSERT INTO usuarios (username, password) VALUES (?,?)", ['rivera', 'password']);
+ var username = $('#username').val();
+ var password = $('#password').val();
+ tx.executeSql('INSERT INTO usuarios (username, password) VALUES (?,?)', [username, password]);
  queryDB(tx);
 }
 
@@ -43,7 +36,10 @@ function successCB() {
 var app = {
     // Application Constructor
     initialize: function() {
-		//var db = window.sqlitePlugin.openDatabase({name: "my.db"});
-		//db.transaction(populateDB, errorCB, successCB);
+		//
+		$('#formulario').submit(function(event) {
+			var db = window.sqlitePlugin.openDatabase({name: "my.db"});
+			db.transaction(registrarUsuario, errorCB, successCB);
+		});
     }
 };
