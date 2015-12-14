@@ -1,4 +1,10 @@
 // create table
+function borrarTablaUsuarios(tx) {
+ tx.executeSql('DROP TABLE IF EXISTS usuarios');
+ queryDB(tx);
+}
+
+// create table
 function registrarUsuario(tx) {
  tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id integer primary key, username text, password text)');
  var username = $('#username').val();
@@ -15,15 +21,16 @@ function queryDB(tx) {
 // Display the results
 function querySuccess(tx, results) {
  var len = results.rows.length;
- alert("results.rows.length: " + results.rows.length + " [should be 2]"); 
- document.getElementById("output").innerHTML = '';
- for (var i = 0; i < len; i++) { // loop as many times as there are row results
- document.getElementById("output").innerHTML +=
- "<table><tr><td>ID = " + results.rows.item(i).id + 
- "</td><td>username = " + results.rows.item(i).username + 
- "</td><td>password = " + results.rows.item(i).password + "</td></tr></table>";
- } 
+ var out = '';
+ for (var i = 0; i < len; i++) {
+	 out +=
+	 "<tr><td>ID = " + results.rows.item(i).id + 
+	 "</td><td>username = " + results.rows.item(i).username + 
+	 "</td><td>password = " + results.rows.item(i).password + "</td></tr>";
+ }
+ $("#output tbody").html(out);
 }
+
 // Transaction error callback
 function errorCB(err) {
 console.log("Error processing SQL: " + err.code);
@@ -45,6 +52,7 @@ var app = {
 		$('#borrar_registros').click(function(event) {
 			event.preventDefault();
 			alert("debemos borrar todos los registros");
+			db.transaction(borrarTablaUsuarios, errorCB, successCB);
 		});
     }
 };
