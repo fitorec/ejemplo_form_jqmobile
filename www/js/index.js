@@ -31,11 +31,9 @@ function successCB() {
 
 
 var app = {
-	db: null,
     // Application Constructor
     initialize: function() {
-		//app.db = window.sqlitePlugin.openDatabase({name: "my.db"});
-		app.db = window.sqlitePlugin.openDatabase({name: "my.db"});
-		app.db.transaction(populateDB, errorCB, successCB);
+		var db = window.sqlitePlugin.openDatabase({name: "my.db"});
+		db.transaction(populateDB, errorCB, successCB);
     }
 };
