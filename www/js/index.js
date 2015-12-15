@@ -39,18 +39,17 @@ function errorCB(err) {
 function successCB() {
 }
 var app = {
+	db: null,
 	// Application Constructor
 	initialize: function() {
-		//
+		app.db = window.sqlitePlugin.openDatabase({name: "my.db"});
 		$('#formulario').submit(function(event) {
 			event.preventDefault();
-			var db = window.sqlitePlugin.openDatabase({name: "my.db"});
-			db.transaction(registrarUsuario, errorCB, successCB);
+			app.db.transaction(registrarUsuario, errorCB, successCB);
 		});
 		$('#borrar_registros').click(function(event) {
 			event.preventDefault();
-			var db = window.sqlitePlugin.openDatabase({name: "my.db"});
-			db.transaction(borrarTablaUsuarios, errorCB, successCB);
+			app.db.transaction(borrarTablaUsuarios, errorCB, successCB);
 		});
 	}//end initialize
 };
