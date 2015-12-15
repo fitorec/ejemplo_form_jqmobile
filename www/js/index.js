@@ -6,6 +6,10 @@ function queryDB(tx) {
 // Display the results
 function querySuccess(tx, results) {
 	var len = results.rows.length;
+	if(len == 0) {
+		$("#output tbody").fadeOut();
+		return;
+	}
 	var out = '';
 	for (var i = 0; i < len; i++) {
 	out +=
@@ -13,7 +17,7 @@ function querySuccess(tx, results) {
 	"</td><td>" + results.rows.item(i).username + 
 	"</td><td>" + results.rows.item(i).password + "</td></tr>";
 	}
-	$("#output tbody").html(out);
+	$("#output tbody").fadeIn().html(out);
 }
 
 // Transaction error callback
