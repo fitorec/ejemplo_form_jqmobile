@@ -7,7 +7,7 @@ function queryDB(tx) {
 function querySuccess(tx, results) {
 	var len = results.rows.length;
 	if(len == 0) {
-		$("#output tbody").fadeOut();
+		$("#output").fadeOut();
 		return;
 	}
 	var out = '';
