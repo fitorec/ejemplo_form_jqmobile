@@ -25,9 +25,9 @@ function querySuccess(tx, results) {
 	var out = '';
 	for (var i = 0; i < len; i++) {
 	out +=
-	"<tr><td>ID = " + results.rows.item(i).id + 
-	"</td><td>username = " + results.rows.item(i).username + 
-	"</td><td>password = " + results.rows.item(i).password + "</td></tr>";
+	"<tr><td>" + results.rows.item(i).id + 
+	"</td><td>" + results.rows.item(i).username + 
+	"</td><td>" + results.rows.item(i).password + "</td></tr>";
 	}
 	$("#output tbody").html(out);
 }
