@@ -1,19 +1,3 @@
-// Borra una tabla y la vuelve a crear(truncate)
-function borrarTablaUsuarios(tx) {
-	tx.executeSql('DROP TABLE IF EXISTS usuarios');
-	tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id integer primary key, username text, password text)');
-	queryDB(tx);
-}
-
-// Registra a un usuario si este no existe.
-function registrarUsuario(tx) {
-	tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id integer primary key, username text, password text)');
-	var username = $('#username').val();
-	var password = $('#password').val();
-	tx.executeSql('INSERT INTO usuarios (username, password) VALUES (?,?)', [username, password]);
-	queryDB(tx);
-}
-
 // form the query
 function queryDB(tx) {
 	tx.executeSql("SELECT id, username, password from usuarios;", [], querySuccess, errorCB);
@@ -31,13 +15,16 @@ function querySuccess(tx, results) {
 	}
 	$("#output tbody").html(out);
 }
-	// Transaction error callback
+
+// Transaction error callback
 function errorCB(err) {
 	console.log("Error processing SQL: " + err.code);
 }
 // Success error callback
 function successCB() {
 }
+
+
 var app = {
 	// Application Constructor
 	initialize: function() {
@@ -45,12 +32,28 @@ var app = {
 		$('#formulario').submit(function(event) {
 			event.preventDefault();
 			var db = window.sqlitePlugin.openDatabase({name: "my.db"});
-			db.transaction(registrarUsuario, errorCB, successCB);
+			db.transaction(app.registrarUsuario, errorCB, successCB);
 		});
 		$('#borrar_registros').click(function(event) {
 			event.preventDefault();
 			var db = window.sqlitePlugin.openDatabase({name: "my.db"});
-			db.transaction(borrarTablaUsuarios, errorCB, successCB);
+			db.transaction(app.borrarTablaUsuarios, errorCB, successCB);
 		});
-	}//end initialize
+	}, //end initialize
+	// Registra a un usuario si este no existe.
+	registrarUsuario: function (tx) {
+		tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id integer primary key, username text, password text)');
+		var username = $('#username').val();
+		var password = $('#password').val();
+		$('#username').val('');
+		$('#password').val('');
+		tx.executeSql('INSERT INTO usuarios (username, password) VALUES (?,?)', [username, password]);
+		queryDB(tx);
+	},
+	// Borra una tabla y la vuelve a crear(truncate)
+	borrarTablaUsuarios: function (tx) {
+		tx.executeSql('DROP TABLE IF EXISTS usuarios');
+		tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id integer primary key, username text, password text)');
+		queryDB(tx);
+	}
 };
