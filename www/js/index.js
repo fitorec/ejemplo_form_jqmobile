@@ -49,6 +49,7 @@ var app = {
 		});
 		$('#borrar_registros').click(function(event) {
 			event.preventDefault();
+			var db = window.sqlitePlugin.openDatabase({name: "my.db"});
 			db.transaction(borrarTablaUsuarios, errorCB, successCB);
 		});
 	}//end initialize
