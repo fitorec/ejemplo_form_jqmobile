@@ -57,7 +57,7 @@ var app = {
 	// Borra una tabla y la vuelve a crear(truncate)
 	borrarTablaUsuarios: function (tx) {
 		tx.executeSql('DROP TABLE IF EXISTS usuarios');
-		tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id integer primary key, username text, password text)');
+		tx.executeSql('CREATE TABLE usuarios (id integer primary key, username text, password text)');
 		queryDB(tx);
 	}
 };
